@@ -1,5 +1,8 @@
 package com.cloudthat.librarymanagement;
 
+import com.cloudthat.librarymanagement.exceptions.BookAlreadyFoundException;
+import com.cloudthat.librarymanagement.exceptions.BookNotFoundException;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -21,8 +24,8 @@ public class Library {
             System.out.println("Book added successfully");
         }
         else {
-
-            System.out.println("Duplicate book found");
+            throw new BookAlreadyFoundException("Book with ISBN "+book.getIsbn()+" already exists");
+//            System.out.println("Duplicate book found");
         }
     }
 
@@ -32,7 +35,8 @@ public class Library {
             Book removedBook = books.remove(isbn);
             System.out.println("Removed "+ removedBook);
         }else{
-            System.out.println("Book does not exists");
+            throw new BookNotFoundException("Book with ISBN "+isbn+" does not exists");
+//            System.out.println("Book does not exists");
         }
     }
 
