@@ -4,8 +4,17 @@
 
                xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-        <bean id="book" class="org.example.Book">
+        <bean id="book" class="org.example.Book" scope = "prototype">
                     <!-- collaborators and configuration for this bean go here -->
+<!--            <constructor-arg index ="0" value ="123" type="String"/>-->
+<!--            <constructor-arg index ="1" value="Java" type="String"/>-->
+<!--            <constructor-arg index ="2" value="Navin" type="String"/>-->
+            <property name="author">
+                <bean id = "author" class = "org.example.Author">
+                    <property name="authorName" value="Elakkiya"/>
+                    <property name="numOfPub" value ="12"/>
+                </bean>
+            </property>
             <property name="isbn" value="1234567"></property>
             <property name="title" value="Introduction to Spring"></property>
 <!--            <property name="author" value="Elakkiya" /> &lt;!&ndash; Add this line &ndash;&gt;-->
